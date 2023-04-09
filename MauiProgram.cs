@@ -1,4 +1,5 @@
-﻿using Microsoft.Extensions.Logging;
+﻿using Book_Management_System.ViewModels;
+using Microsoft.Extensions.Logging;
 
 namespace Book_Management_System;
 
@@ -14,9 +15,11 @@ public static class MauiProgram
 				fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
 				fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
 			});
+        builder.Services.AddSingleton<LoginPage>();
+        builder.Services.AddSingleton<LoginPageViewModel>();
 
 #if DEBUG
-		builder.Logging.AddDebug();
+        builder.Logging.AddDebug();
 #endif
 
 		return builder.Build();
