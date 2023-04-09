@@ -18,7 +18,7 @@ namespace Book_Management_System.ViewModels
         private string _password;
         [ObservableProperty]
         private string _message;
-        readonly ILoginRepository loginRepository = new LoginService();
+        readonly IUserRepository loginRepository = new UserService();
         [ICommand]
         public async void Login()
         {
@@ -28,11 +28,15 @@ namespace Book_Management_System.ViewModels
                 bool isSuccess = loginRepository.Login(UserName, Password);
                 if (isSuccess)
                 {
+                    UserName = "";
+                    Password = "";
                     Message = "Success!";
                 }
                 else
                 {
-                    Message = "Fail!";
+                    UserName = "";
+                    Password = "";
+                    Message = "Incorrect username or password!";
                 }
                     
 

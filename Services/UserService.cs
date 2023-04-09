@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Book_Management_System.Services
 {
-    public class LoginService : ILoginRepository
+    public class UserService : IUserRepository
     {
         private List<UserInfo> list = new List<UserInfo>
         {
@@ -15,8 +15,7 @@ namespace Book_Management_System.Services
             {
                 UserName="Ramesh",
                 Password="1234",
-                Email="ramesh@gmail.com",
-                MobileNumber=12345
+                Email="ramesh@gmail.com"
             }
         };
         public bool Login(string username, string password)
@@ -25,6 +24,18 @@ namespace Book_Management_System.Services
 
             if (isSuccess)
             {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+        public bool SignUp(UserInfo user)
+        {
+            if (user!=null)
+            {
+                list.Add(user);
                 return true;
             }
             else

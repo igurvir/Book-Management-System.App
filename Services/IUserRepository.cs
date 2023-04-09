@@ -7,8 +7,9 @@ using System.Threading.Tasks;
 
 namespace Book_Management_System.Services
 {
-    interface ILoginRepository
+    interface IUserRepository
     {
         bool Login(string username, string password);
+        bool SignUp(UserInfo user);
     }
 }
