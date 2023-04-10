@@ -4,9 +4,9 @@ namespace Book_Management_System;
 
 public partial class BookDetail : ContentPage
 {
-	public BookDetail()
+	public BookDetail(BookDetailViewModel book)
 	{
 		InitializeComponent();
-        var viewModel = new BookDetailViewModel();
+        this.BindingContext = book;
     }
 }
