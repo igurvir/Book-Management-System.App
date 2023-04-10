@@ -1,5 +1,4 @@
-﻿using Book_Management_System.Services;
-using Microsoft.Toolkit.Mvvm.ComponentModel;
+﻿using Microsoft.Toolkit.Mvvm.ComponentModel;
 using Microsoft.Toolkit.Mvvm.Input;
 using System;
 using System.Collections.Generic;
@@ -18,19 +17,19 @@ namespace Book_Management_System.ViewModels
         private string _password;
         [ObservableProperty]
         private string _message;
-        readonly IUserRepository loginRepository = new UserService();
         [ICommand]
         public async void Login()
         {
 
             if (!string.IsNullOrWhiteSpace(UserName) && !string.IsNullOrWhiteSpace(Password))
             {
-                bool isSuccess = loginRepository.Login(UserName, Password);
-                if (isSuccess)
+                var user = App.users.FirstOrDefault(u => u.UserName == UserName && u.Password == Password);
+
+                if (user!=null)
                 {
                     UserName = "";
                     Password = "";
-                    Message = "Success!";
+                    await Shell.Current.GoToAsync("//BookDetail");
                 }
                 else
                 {

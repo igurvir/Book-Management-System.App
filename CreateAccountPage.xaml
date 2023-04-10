@@ -31,7 +31,7 @@
                 <VerticalStackLayout Spacing="25">
                     <Label Text="BOOK MANAGEMENT SYSTEM" TextColor="{x:StaticResource Primary}" FontSize="25" FontAttributes="Bold" HorizontalTextAlignment="Center"/>
                     <Label Text="SIGN UP" FontSize="28" FontAttributes="Bold" />
-                    <Label Text="{Binding Message}" FontSize="16" FontAttributes="Bold" />
+                    <Label Text="{Binding Message}" FontSize="14" FontAttributes="Bold" TextColor="Red" />
                     <Frame Padding="10" BorderColor="Transparent" CornerRadius="0">
                         <Grid ColumnDefinitions="25,*" ColumnSpacing="10">
                             <Image VerticalOptions="Center" Source="user.png" HeightRequest="25" WidthRequest="25" />
