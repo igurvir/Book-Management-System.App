@@ -1,5 +1,4 @@
 ﻿using Book_Management_System.Models;
-using Book_Management_System.Services;
 using Microsoft.Toolkit.Mvvm.ComponentModel;
 using Microsoft.Toolkit.Mvvm.Input;
 using System;
@@ -21,7 +20,6 @@ namespace Book_Management_System.ViewModels
         [ObservableProperty]
         private string _message;
 
-        readonly IUserRepository loginRepository = new UserService();
         [ICommand]
         public async void SignUp()
         {
@@ -33,21 +31,8 @@ namespace Book_Management_System.ViewModels
                     UserName = Name,
                     Password =Password
                 };
-                bool isSuccess = loginRepository.SignUp(user);
-                if (isSuccess)
-                {
-                    Name = "";
-                    Email = "";
-                    Password = "";
-                    await Shell.Current.GoToAsync("//SignIn");
-                }
-                else
-                {
-                    Name = "";
-                    Email = "";
-                    Password = "";
-                    Message = "Unable to create account";
-                }
+                App.users.Add(user);
+                await Shell.Current.GoToAsync("//SignIn");
             }
             else
             {

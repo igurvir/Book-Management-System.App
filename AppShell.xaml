@@ -15,5 +15,9 @@
         Title="Home"
         ContentTemplate="{DataTemplate local:CreateAccountPage}"
         Route="CreateAccountPage" />
+    <ShellContent
+        Title="Home"
+        ContentTemplate="{DataTemplate local:BookDetail}"
+        Route="BookDetail" />
 
 </Shell>
