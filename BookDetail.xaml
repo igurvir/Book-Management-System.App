@@ -1,8 +1,11 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:models="clr-namespace:Book_Management_System.Models"
+             xmlns:local="clr-namespace:Book_Management_System.ViewModels"
              x:Class="Book_Management_System.BookDetail"
-             Title="BookDetail">
+             Title="BookDetail"
+              Shell.NavBarIsVisible="False">
     <Grid x:Name="bacground" RowDefinitions="1*,8*,1*">
         <Frame BackgroundColor="#cfd0d8" Grid.Row="0" HorizontalOptions="EndAndExpand"
                Padding="0" 
@@ -17,9 +20,70 @@
                Margin="0,-120,-120,0"
                HeightRequest="250"
                WidthRequest="250" CornerRadius="125">
-
+            
         </Frame>
+       
+        <Frame ZIndex="1" CornerRadius="0" BackgroundColor="{x:StaticResource DashboardBackground}"
+               Grid.Row="1" VerticalOptions="CenterAndExpand"
+               Margin="0,0,40,0"
+               >
+            
+            <ScrollView HorizontalScrollBarVisibility="Default">
 
+                <VerticalStackLayout Spacing="25">
+                    <Button HorizontalOptions="End" CornerRadius="10" HeightRequest="40" WidthRequest="80" Text="Add" FontSize="20" FontAttributes="Bold"/>
+
+                    <RefreshView x:DataType="local:BookDetailViewModel"
+                         Command="{Binding LoadBooksCommand}"
+                         IsRefreshing="{Binding IsBusy}">
+
+                        
+                          
+                        <CollectionView ItemsSource="{Binding Book}">
+                            <CollectionView.Header>
+                                <Grid Padding="10">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*" />
+                                        <ColumnDefinition Width="*" />
+                                        <ColumnDefinition Width="*" />
+                                        <ColumnDefinition Width="Auto" />
+                                    </Grid.ColumnDefinitions>
+                                    <Label Grid.Column="0" Text="Title" FontAttributes="Bold" FontSize="Medium" />
+                                    <Label Grid.Column="1" Text="Author" FontAttributes="Bold" FontSize="Medium" />
+                                    <Label Grid.Column="2" Text="Genre" FontAttributes="Bold" FontSize="Medium" />
+                                    <Label Grid.Column="3" Text="Actions" FontAttributes="Bold" FontSize="Medium" />
+                                </Grid>
+                            </CollectionView.Header>
+                            <CollectionView.ItemTemplate>
+                                <DataTemplate x:DataType="models:Book">
+                                    <StackLayout Padding="2">
+                                        <Grid Padding="10">
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="Auto" />
+                                            </Grid.RowDefinitions>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="*" />
+                                                <ColumnDefinition Width="*" />
+                                                <ColumnDefinition Width="*" />
+                                                <ColumnDefinition Width="Auto" />
+                                            </Grid.ColumnDefinitions>
+                                            <Label Grid.Column="0" Text="{Binding Title}" FontAttributes="Bold" FontSize="Medium" />
+                                            <Label Grid.Column="1" Text="{Binding Author}" FontSize="Small" />
+                                            <Label Grid.Column="2" Text="{Binding Genre}" FontSize="Small" />
+                                            <StackLayout Grid.Column="3" Orientation="Horizontal" Spacing="10">
+                                                <Image Source="edit.png" WidthRequest="30" Aspect="AspectFit" HorizontalOptions="EndAndExpand" />
+                                                <Image Source="delete.png" WidthRequest="30" Aspect="AspectFit" HorizontalOptions="EndAndExpand" />
+                                            </StackLayout>
+                                        </Grid>
+                                    </StackLayout>
+                                </DataTemplate>
+                            </CollectionView.ItemTemplate>
+                        </CollectionView>
+
+                    </RefreshView>
+                </VerticalStackLayout>
+            </ScrollView>
+        </Frame>
         <Frame BackgroundColor="#cfd0d8" Grid.Row="2" 
                VerticalOptions="EndAndExpand"
                HorizontalOptions="StartAndExpand"
@@ -29,6 +93,7 @@
                WidthRequest="250" CornerRadius="125">
 
             </Frame>
+       
 
         <Frame BackgroundColor="{x:StaticResource Primary}" 
                VerticalOptions="EndAndExpand"

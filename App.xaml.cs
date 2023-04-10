@@ -16,16 +16,11 @@ public partial class App : Application
     };
     public static List<Book> books = new List<Book>()
     {
-         new Book
-            {
-                Title = "The Great Gatsby",
-                Author = "F. Scott Fitzgerald",
-                Publisher = "Charles Scribner's Sons",
-                PublicationDate = new DateTime(1925, 4, 10),
-                ISBN = "978-0-7432-7356-5",
-                Genre = "Fiction",
-                Summary = "The story primarily concerns the young and mysterious millionaire Jay Gatsby and his quixotic passion and obsession for the beautiful former debutante Daisy Buchanan."
-            }
+      new Book { Title = "The Great Gatsby", Author = "F. Scott Fitzgerald", Genre = "Classic" },
+            new Book { Title = "To Kill a Mockingbird", Author = "Harper Lee", Genre = "Classic" },
+            new Book { Title = "1984", Author = "George Orwell", Genre = "Science Fiction" },
+            new Book { Title = "The Hitchhiker's Guide to the Galaxy", Author = "Douglas Adams", Genre = "Science Fiction" },
+            new Book { Title = "Harry Potter and the Philosopher's Stone", Author = "J.K. Rowling", Genre = "Fantasy" }
 
     };
 

@@ -49,6 +49,8 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <None Remove="Resources\Images\delete.png" />
+	  <None Remove="Resources\Images\edit.png" />
 	  <None Remove="Resources\Images\email.png" />
 	  <None Remove="Resources\Images\mobile.png" />
 	  <None Remove="Resources\Images\password.png" />
