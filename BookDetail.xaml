@@ -32,7 +32,7 @@
 
                 <VerticalStackLayout Spacing="25">
                     <Button HorizontalOptions="End" CornerRadius="10" HeightRequest="40" WidthRequest="80" Text="Add" FontSize="20" FontAttributes="Bold"/>
-
+                    <Button  HorizontalOptions="Start" CornerRadius="10" HeightRequest="50" WidthRequest="100" Text="Logout" FontSize="20" FontAttributes="Bold" Margin="0,-65,0,0" Command="{Binding LogoutCommand}"/>
                     <RefreshView x:DataType="local:BookDetailViewModel"
                          Command="{Binding LoadBooksCommand}"
                          IsRefreshing="{Binding IsBusy}">
