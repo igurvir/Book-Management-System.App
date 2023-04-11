@@ -22,5 +22,10 @@ namespace Book_Management_System.ViewModels
             IsBusy = true;
             Book = App.books;
         }
+        [ICommand]
+        private async Task Logout()
+        {
+            await Shell.Current.GoToAsync("//SignIn");
+        }
     }
 }
